@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" type="image/png" href="AS_Logo.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Adarsh A S &mdash; Graphic Designer &amp; Video Editor</title>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600&family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <style>
+.work-bg img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .nav-logo img{
   height: 28px;
   width: auto;
@@ -127,7 +133,11 @@ section{position:relative;z-index:1;}
 .skill-card:hover{background:rgba(90,0,31,.25);border-color:rgba(255,34,85,.35);color:#fff;transform:scale(1.06);box-shadow:0 0 20px rgba(255,34,85,.12);}
 .tool-card{display:inline-flex;align-items:center;gap:11px;padding:12px 26px;border-radius:14px;background:rgba(90,0,31,.1);border:1px solid rgba(255,34,85,.12);font-size:.8rem;font-weight:300;color:var(--text-mid);cursor:default;white-space:nowrap;transition:all .3s ease;}
 .tool-card:hover{background:rgba(90,0,31,.3);border-color:rgba(255,34,85,.4);color:#fff;box-shadow:0 0 22px rgba(255,34,85,.15);transform:scale(1.06);}
-.tool-icon{font-size:1.1rem;}
+.tool-icon{
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
 
 /* WORKS */
 #works{padding:120px 0;}
@@ -191,9 +201,26 @@ footer{padding:60px 60px 36px;border-top:1px solid rgba(255,255,255,.05);display
 /* ANIMATIONS */
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 
-/* Reveal — visible by default, animate in when .in applied */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
-.reveal.in{opacity:1;transform:translateY(0);}
+/* PREMIUM SLIDE-UP REVEAL */
+.reveal{
+  opacity:0;
+  transform:translateY(60px) scale(0.96);
+  transition:
+    opacity 0.9s cubic-bezier(.22,1,.36,1),
+    transform 0.9s cubic-bezier(.22,1,.36,1);
+  will-change: transform, opacity;
+}
+
+.reveal.in{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+/* stagger delay */
+.reveal.delay-1{transition-delay:0.1s;}
+.reveal.delay-2{transition-delay:0.2s;}
+.reveal.delay-3{transition-delay:0.3s;}
+.reveal.delay-4{transition-delay:0.4s;}
+.reveal.delay-5{transition-delay:0.5s;}
 
 /* RESPONSIVE */
 @media(max-width:900px){
@@ -202,11 +229,19 @@ footer{padding:60px 60px 36px;border-top:1px solid rgba(255,255,255,.05);display
   .nav-links a{font-size:.7rem;}
   #hero{padding:90px 24px 70px;flex-direction:column;justify-content:center;align-items:center;gap:32px;}
   .hero-logo-wrap{
-  width: 720px;   /* increase from 620px */
-  height: 720px;
+ width: clamp(400px, 55vw, 520px);
+    height: clamp(400px, 55vw, 520px);
   margin-left: 40px; /* slightly reduce so it doesn’t go too right */
 }
-  .hero-content{text-align:center;max-width:100%;}
+  .hero-content{
+    margin-right: 0;          /* remove right push */
+    transform: translateX(0); /* remove left shift */
+  }
+  #hero .hero-tag,
+  #hero .hero-heading{
+    text-align: center;
+  }
+
   .hero-pills{justify-content:center;}
   .hero-scroll{left:24px;}
   .container{padding:0 24px;}
@@ -252,7 +287,7 @@ footer{padding:60px 60px 36px;border-top:1px solid rgba(255,255,255,.05);display
     <canvas id="logo-canvas"></canvas>
   </div>
   <div class="hero-content">
-    <div class="hero-tag">Creative Portfolio &mdash; 2024</div>
+    <div class="hero-tag">Portfolio &mdash; 2026</div>
     <h1 class="hero-heading">
       <span class="faded">Built on </span><span class="bright">ideas,</span><br>
       <span class="faded">refined through </span><span class="bright">visuals.</span>
@@ -333,7 +368,16 @@ footer{padding:60px 60px 36px;border-top:1px solid rgba(255,255,255,.05);display
     </div>
     <div class="marquee-row">
       <div class="marquee-track rev">
-        <div class="tool-card"><span class="tool-icon">&#128444;</span> Photoshop</div><div class="tool-card"><span class="tool-icon">&#127916;</span> Premiere Pro</div><div class="tool-card"><span class="tool-icon">&#10024;</span> After Effects</div><div class="tool-card"><span class="tool-icon">&#128208;</span> InDesign</div><div class="tool-card"><span class="tool-icon">&#128247;</span> Lightroom</div><div class="tool-card"><span class="tool-icon">&#128444;</span> Photoshop</div><div class="tool-card"><span class="tool-icon">&#127916;</span> Premiere Pro</div><div class="tool-card"><span class="tool-icon">&#10024;</span> After Effects</div><div class="tool-card"><span class="tool-icon">&#128208;</span> InDesign</div><div class="tool-card"><span class="tool-icon">&#128247;</span> Lightroom</div>
+        <div class="tool-card"><img src="PS.png" class="tool-icon">Photoshop</div>
+		<div class="tool-card"><img src="PR.png" class="tool-icon"> Premiere Pro</div>
+		<div class="tool-card"><img src="AE.png" class="tool-icon"> After Effects</div>
+		<div class="tool-card"><img src="ID.png" class="tool-icon"> InDesign</div>
+		<div class="tool-card"><img src="LR.png" class="tool-icon"> Lightroom</div>
+		<div class="tool-card"><img src="PS.png" class="tool-icon"> Photoshop</div>
+		<div class="tool-card"><img src="PR.png" class="tool-icon"> Premiere Pro</div>
+		<div class="tool-card"><img src="AE.png" class="tool-icon"> After Effects</div>
+		<div class="tool-card"><img src="ID.png" class="tool-icon"> InDesign</div>
+		<div class="tool-card"><img src="LR.png" class="tool-icon"> Lightroom</div>
       </div>
     </div>
   </div>
@@ -344,15 +388,15 @@ footer{padding:60px 60px 36px;border-top:1px solid rgba(255,255,255,.05);display
     <div class="section-label reveal">My Works</div>
     <div class="works-grid">
       <div class="work-card reveal" onclick="openModal('Posters','Graphic Design','Powerful visual compositions crafted to communicate brand messages with impact.','&#128444;')">
-        <div class="work-bg b1"><svg viewBox="0 0 400 300"><circle cx="200" cy="150" r="90" fill="none" stroke="rgba(255,34,85,0.18)" stroke-width="1"/><circle cx="200" cy="150" r="55" fill="none" stroke="rgba(255,34,85,0.12)" stroke-width="1"/><line x1="110" y1="60" x2="290" y2="240" stroke="rgba(255,34,85,0.09)" stroke-width="1"/><line x1="290" y1="60" x2="110" y2="240" stroke="rgba(255,34,85,0.09)" stroke-width="1"/><text x="200" y="162" text-anchor="middle" fill="rgba(255,34,85,0.28)" font-size="44" font-family="serif">P</text></svg></div>
+        <div class="work-bg b1"><img src="Posters.jpg" alt="Posters"><svg viewBox="0 0 400 300"><circle cx="200" cy="150" r="90" fill="none" stroke="rgba(255,34,85,0.18)" stroke-width="1"/><circle cx="200" cy="150" r="55" fill="none" stroke="rgba(255,34,85,0.12)" stroke-width="1"/><line x1="110" y1="60" x2="290" y2="240" stroke="rgba(255,34,85,0.09)" stroke-width="1"/><line x1="290" y1="60" x2="110" y2="240" stroke="rgba(255,34,85,0.09)" stroke-width="1"/><text x="200" y="162" text-anchor="middle" fill="rgba(255,34,85,0.28)" font-size="44" font-family="serif">P</text></svg></div>
         <div class="work-num">01</div><div class="work-overlay"><div class="work-cat">Graphic Design</div><div class="work-title">Posters</div><div class="work-link">View Project &#8594;</div></div>
       </div>
       <div class="work-card reveal" onclick="openModal('Flyers','Graphic Design','Event flyers designed to grab attention and drive engagement.','&#128196;')">
-        <div class="work-bg b2"><svg viewBox="0 0 400 300"><rect x="110" y="55" width="180" height="190" rx="5" fill="none" stroke="rgba(255,34,85,0.15)" stroke-width="1"/><rect x="126" y="68" width="148" height="28" rx="3" fill="rgba(255,34,85,0.1)"/><line x1="126" y1="118" x2="274" y2="118" stroke="rgba(255,34,85,0.1)" stroke-width="1"/><line x1="126" y1="145" x2="240" y2="145" stroke="rgba(255,34,85,0.08)" stroke-width="1"/></svg></div>
+        <div class="work-bg b2"><img src="Flyers.jpg" alt="Flyers"><svg viewBox="0 0 400 300"><rect x="110" y="55" width="180" height="190" rx="5" fill="none" stroke="rgba(255,34,85,0.15)" stroke-width="1"/><rect x="126" y="68" width="148" height="28" rx="3" fill="rgba(255,34,85,0.1)"/><line x1="126" y1="118" x2="274" y2="118" stroke="rgba(255,34,85,0.1)" stroke-width="1"/><line x1="126" y1="145" x2="240" y2="145" stroke="rgba(255,34,85,0.08)" stroke-width="1"/></svg></div>
         <div class="work-num">02</div><div class="work-overlay"><div class="work-cat">Graphic Design</div><div class="work-title">Flyers</div><div class="work-link">View Project &#8594;</div></div>
       </div>
       <div class="work-card reveal" onclick="openModal('Brochures','Print Design','Multi-page brochure layouts balancing information and aesthetics.','&#128203;')">
-        <div class="work-bg b3"><svg viewBox="0 0 400 300"><rect x="75" y="55" width="105" height="190" rx="4" fill="none" stroke="rgba(255,34,85,0.1)" stroke-width="1"/><rect x="195" y="55" width="130" height="190" rx="4" fill="none" stroke="rgba(255,34,85,0.17)" stroke-width="1"/><rect x="210" y="132" width="100" height="64" rx="3" fill="rgba(255,34,85,0.07)"/></svg></div>
+        <div class="work-bg b3"><img src="Brochures.jpg" alt="Brochures"><svg viewBox="0 0 400 300"><rect x="75" y="55" width="105" height="190" rx="4" fill="none" stroke="rgba(255,34,85,0.1)" stroke-width="1"/><rect x="195" y="55" width="130" height="190" rx="4" fill="none" stroke="rgba(255,34,85,0.17)" stroke-width="1"/><rect x="210" y="132" width="100" height="64" rx="3" fill="rgba(255,34,85,0.07)"/></svg></div>
         <div class="work-num">03</div><div class="work-overlay"><div class="work-cat">Print Design</div><div class="work-title">Brochures</div><div class="work-link">View Project &#8594;</div></div>
       </div>
       <div class="work-card reveal" onclick="openModal('Thumbnails','Digital Design','Eye-catching thumbnails designed to maximise click-through.','&#128421;')">
@@ -406,7 +450,7 @@ footer{padding:60px 60px 36px;border-top:1px solid rgba(255,255,255,.05);display
   <div class="footer-tag">&ldquo;Crafting visuals that speak beyond words.&rdquo;</div>
   <div class="footer-socials"><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="mailto:hello@adarsh.design">Email</a></div>
   <div class="footer-nav"><a href="#hero">Home</a><a href="#intro">About</a><a href="#works">Works</a><a href="#contact">Contact</a></div>
-  <div class="footer-copy">&#169; 2024 Adarsh A S &#8212; All rights reserved</div>
+  <div class="footer-copy">&#169; 2026 Adarsh A S &#8212; All rights reserved</div>
 </footer>
 
 <div class="modal-overlay" id="modal">
@@ -460,13 +504,28 @@ footer{padding:60px 60px 36px;border-top:1px solid rgba(255,255,255,.05);display
           io.unobserve(entries[i].target);
         }
       }
-    }, { threshold: 0, rootMargin: '0px 0px -20px 0px' });
+    }, { 
+  threshold: 0.2,
+  rootMargin: '0px 0px -80px 0px'
+});
     for (var i = 0; i < revEls.length; i++) io.observe(revEls[i]);
   } else {
     showAll();
   }
-  /* Hard guarantee — everything visible after 2s no matter what */
-  setTimeout(showAll, 2000);
+var io = new IntersectionObserver(function (entries) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      io.unobserve(entry.target);
+    }
+  });
+}, { 
+  threshold: 0.3,
+  rootMargin: '0px 0px -100px 0px'
+});
+document.querySelectorAll('#about .reveal').forEach((el, i) => {
+  el.style.transitionDelay = (i * 0.15) + 's';
+});
 
   /* ----- NAV SCROLL ----- */
   var navbar = document.getElementById('navbar');
@@ -644,6 +703,12 @@ var time = Date.now() * 0.002;
 
 p.vx += Math.sin(time + p.ox * 0.01) * 0.05;
 p.vy += Math.cos(time + p.oy * 0.01) * 0.05;
+document.querySelectorAll('section').forEach(section => {
+  const items = section.querySelectorAll('.reveal');
+  items.forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.1) + 's';
+  });
+});
 </script>
 </body>
 </html>
